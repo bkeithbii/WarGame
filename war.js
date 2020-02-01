@@ -33,23 +33,10 @@ class Deck {
 
 }
 
-// class firstPlayer {
-//     constructor() {
-//         this.length = length
-//         this.cards = []
-//     }
-// }
-// class secondPlayer {
-//     constructor() {
-//         this.length = length 
-//         this.cards = []
-//     }
-// }
-
 
 const warDeck = new Deck()
 warDeck.makeCards();
-//  console.log(warDeck.cards);
+// console.log(warDeck.cards);
 //Deck of Cards has been made
 
 //Next - SHUFFLE the deck 
@@ -57,6 +44,16 @@ warDeck.shuffle();
 // console.log(warDeck.cards);
 //This is a shuffled deck
 
+let playerOneDeck = [];
+let playerTwoDeck = [];
+
+//Divide the deck amongst the players
+playerOneDeck.push(warDeck.cards.slice(0, 26));
+playerTwoDeck.push(warDeck.cards.slice(26, 52));
+
+warDeck.shuffle();
+console.log(playerOneDeck);
+console.log(playerTwoDeck);
 
 //Random card draw
 //  console.log(warDeck.draw());
@@ -66,12 +63,3 @@ warDeck.shuffle();
 // let halfDeck = Math.ceil(warDeck.cards.length / 2);
 
 // let firstPlayerDeck = warDeck.cards.splice(0, halfDeck);
-
-
-
-//Try to deal equal hands to each player 
-const firstPlayerDeck = new firstPlayer()
-console.log(firstPlayerDeck.cards);
-
-const secondPlayerDeck = new secondPlayer()
-console.log(secondPlayerDeck.cards);
