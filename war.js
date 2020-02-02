@@ -60,58 +60,87 @@ warDeck.shuffle();
 warDeck.distributeCards();
 // console.log(playerOne.currentDeck);
 // console.log(playerTwo.currentDeck);
+let playerOneDeck = playerOne.currentDeck[0];
+let playerTwoDeck = playerTwo.currentDeck[0];
+// console.log(playerOneDeck);
+// console.log(playerTwoDeck);
 
-//Make function to run the game!
-function startGame() {
-    for (let i = 0, j = 0; i < 26, j < 26; i++, j++) {
-        if (playerOne.currentDeck[i].score > playerTwo.currentDeck[j].score) {
-            console.log("Player One: " + 
-            playerOne.currentDeck[i].suit + playerOne.currentDeck[i].rank + " " + 
-            "Player Two: " + playerTwo.currentDeck[i].suit + playerTwo.currentDeck[j].rank);
-            console.log("Player One WINS!");
-            //Set up conditional for player one win, now add cards to their deck from round
-            playerOne.currentDeck.push(playerOne.currentDeck[i]);
-            playerOne.currentDeck.push(playerTwo.currentDeck[j]);
-        } //Set up else for player two win and add cards to their deck from round
-        else if (playerOne.currentDeck[i].score < playerTwo.currentDeck[j].score) {
-            console.log("Player One: " +
-            playerOne.currentDeck[i].suit + playerOne.currentDeck[i].rank + " " + 
-            "Player Two: " + playerTwo.currentDeck[i].suit + playerTwo.currentDeck[j].rank);
-            console.log("Player Two WINS!");
-            playerTwo.currentDeck.push(playerOne.currentDeck[i]);
-            playerTwo.currentDeck.push(playerTwo.currentDeck[j]);
-        } //Set up else for potential war scenario, score[i] = score[j]
-        else if (playerOne.currentDeck[i].score === playerTwo.currentDeck[j].score) {
-            console.log("WAR...what is it good for");
-            console.log("Player One: " + 
-            playerOne.currentDeck[i].suit + playerOne.currentDeck[i].rank + " " + 
-            "Player Two: " + playerTwo.currentDeck[i].suit + playerTwo.currentDeck[j].rank);
-            //Another conditional to account for extra cards being played in war scenario
-            if (playerOne.currentDeck[i + 1].score > playerTwo.currentDeck[j + 1].score) {
-                playerOne.currentDeck.push(playerOne.currentDeck[i]);
-                playerOne.currentDeck.push(playerOne.currentDeck[i + 1]);
-                playerOne.currentDeck.push(playerOne.currentDeck[i +2]);
-                playerOne.currentDeck.push(playerOne.currentDeck[i +3]);
+console.log(playerOneDeck[0].score);
 
-                playerOne.currentDeck.push(playerTwo.currentDeck[j]);
-                playerOne.currentDeck.push(playerTwo.currentDeck[j +1]);
-                playerOne.currentDeck.push(playerTwo.currentDeck[j + 2]);
-                playerOne.currentDeck.push(playerTwo.currentDeck[j + 3]);
-            } else {
-                playerTwo.currentDeck.push(playerOne.currentDeck[i]);
-                playerTwo.currentDeck.push(playerOne.currentDeck[i + 1]);
-                playerTwo.currentDeck.push(playerOne.currentDeck[i +2]);
-                playerTwo.currentDeck.push(playerOne.currentDeck[i +3]);
 
-                playerTwo.currentDeck.push(playerTwo.currentDeck[j]);
-                playerTwo.currentDeck.push(playerTwo.currentDeck[j +1]);
-                playerTwo.currentDeck.push(playerTwo.currentDeck[j + 2]);
-                playerTwo.currentDeck.push(playerTwo.currentDeck[j + 3]);
-            }
-        }
-    }
-}
+// //Make function to run the game!
+// function startGame() {
+//     for (let i = 0, j = 0; i < 26, j < 26; i++, j++) {
+//         if (playerOne.currentDeck[i].score > playerTwo.currentDeck[j].score) {
+//             console.log(playerOne.currentDeck[i].suit + playerOne.currentDeck[i].rank + " " + 
+//             playerTwo.currentDeck[j].suit + playerTwo.currentDeck[j].rank);
+//             console.log("Player One WINS!");
+//             //Set up conditional for player one win, now add cards to their deck from round
+//             playerOne.currentDeck.push(playerOne.currentDeck[i]);
+//             playerOne.currentDeck.shift(playerOne.currentDeck[i]);
+//             playerOne.currentDeck.push(playerTwo.currentDeck[j]);
+//             playerTwo.currentDeck.shift(playerTwo.currentDeck[j]);
+//         } //Set up else for player two win and add cards to their deck from round
+//         else if (playerOne.currentDeck[i].score < playerTwo.currentDeck[j].score) {
+//             console.log(playerOne.currentDeck[i].suit + playerOne.currentDeck[i].rank + " " + 
+//             playerTwo.currentDeck[j].suit + playerTwo.currentDeck[j].rank);
+//             console.log("Player Two WINS!");
+//             playerTwo.currentDeck.push(playerOne.currentDeck[i]);
+//             playerTwo.currentDeck.push(playerTwo.currentDeck[j]);
+//             playerTwo.currentDeck.shift(playerTwo.currentDeck[j]);
+//             playerOne.currentDeck.shift(playerOne.currentDeck[i]);
+//         } //Set up else for potential war scenario, score[i] = score[j]
+//         else if (playerOne.currentDeck[i].score === playerTwo.currentDeck[j].score) {
+//             console.log("WAR...what is it good for");
+//             console.log(playerOne.currentDeck[i].suit + playerOne.currentDeck[i].rank + " " + 
+//             playerTwo.currentDeck[j].suit + playerTwo.currentDeck[j].rank);
+//             //Another conditional to account for extra cards being played in war scenario
+//             if (playerOne.currentDeck[i + 1].score > playerTwo.currentDeck[j + 1].score) {
+//                 playerOne.currentDeck.push(playerOne.currentDeck[i]);
+//                 playerOne.currentDeck.push(playerOne.currentDeck[i + 1]);
+//                 playerOne.currentDeck.push(playerOne.currentDeck[i +2]);
+//                 playerOne.currentDeck.push(playerOne.currentDeck[i +3]);
 
+//                 playerOne.currentDeck.shift(playerOne.currentDeck[i]);
+//                 playerOne.currentDeck.shift(playerOne.currentDeck[i + 1]);
+//                 playerOne.currentDeck.shift(playerOne.currentDeck[i +2]);
+//                 playerOne.currentDeck.shift(playerOne.currentDeck[i +3]);
+
+//                 playerOne.currentDeck.push(playerTwo.currentDeck[j]);
+//                 playerOne.currentDeck.push(playerTwo.currentDeck[j +1]);
+//                 playerOne.currentDeck.push(playerTwo.currentDeck[j + 2]);
+//                 playerOne.currentDeck.push(playerTwo.currentDeck[j + 3]);
+
+//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j]);
+//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j + 1]);
+//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j +2]);
+//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j +3]);
+//             } else {
+//                 playerTwo.currentDeck.push(playerOne.currentDeck[i]);
+//                 playerTwo.currentDeck.push(playerOne.currentDeck[i + 1]);
+//                 playerTwo.currentDeck.push(playerOne.currentDeck[i +2]);
+//                 playerTwo.currentDeck.push(playerOne.currentDeck[i +3]);
+
+//                 playerTwo.currentDeck.push(playerTwo.currentDeck[j]);
+//                 playerTwo.currentDeck.push(playerTwo.currentDeck[j +1]);
+//                 playerTwo.currentDeck.push(playerTwo.currentDeck[j + 2]);
+//                 playerTwo.currentDeck.push(playerTwo.currentDeck[j + 3]);
+
+//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j]);
+//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j + 1]);
+//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j +2]);
+//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j +3]);
+
+//                 playerOne.currentDeck.shift(playerOne.currentDeck[i]);
+//                 playerOne.currentDeck.shift(playerOne.currentDeck[i + 1]);
+//                 playerOne.currentDeck.shift(playerOne.currentDeck[i +2]);
+//                 playerOne.currentDeck.shift(playerOne.currentDeck[i +3]);
+//             }
+//         }
+//     }
+// }
+
+// console.log(startGame());
 
 
 
