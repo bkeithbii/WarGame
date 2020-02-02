@@ -61,7 +61,20 @@ warDeck.distributeCards();
 // console.log(playerOne.currentDeck);
 // console.log(playerTwo.currentDeck);
 
-
+//Make function to run the game!
+function startGame() {
+    for (let i = 0, j = 0; i < 26, j < 26; i++, j++) {
+        if (playerOne.currentDeck[i].score > playerTwo.currentDeck[i].score) {
+            console.log("Player One: " + 
+            playerOne.currentDeck[i].suit + playerOne.currentDeck[i].rank + " " + 
+            "Player Two: " + playerTwo.currentDeck[i].suit + playerTwo.currentDeck[i].rank);
+            console.log("Player One WINS!");
+            //Set up conditional for player one win, now add cards to their deck from round
+            playerOne.currentDeck.push(playerOne.currentDeck[i]);
+            playerOne.currentDeck.push(playerTwo.currentDeck[i]);
+        }
+    }
+}
 
 
 
