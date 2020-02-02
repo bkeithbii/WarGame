@@ -28,16 +28,16 @@ class Deck {
        return warDeck.cards.sort(function(a, b){ return 0.5-Math.random(); })
    }
    distributeCards() {
-        playerOne.currentDeck.push(warDeck.cards.slice(0, 26));
-        playerTwo.currentDeck.push(warDeck.cards.slice(26, 52));
+        playerOne.Deck.push(warDeck.cards.slice(0, 26));
+        playerTwo.Deck.push(warDeck.cards.slice(26, 52));
    }
 }
 
 //Make object for players in game
 class Player {
-    constructor(name, currentDeck, winDeck) {
+    constructor(name, Deck, winDeck) {
         this.name = name
-        this.currentDeck = []
+        this.Deck = []
         this.winDeck = []
     }
 }
@@ -58,89 +58,89 @@ warDeck.shuffle();
 
 //Deck dealt evenly amongst players
 warDeck.distributeCards();
-// console.log(playerOne.currentDeck);
-// console.log(playerTwo.currentDeck);
-let playerOneDeck = playerOne.currentDeck[0];
-let playerTwoDeck = playerTwo.currentDeck[0];
+// console.log(playerOne.Deck);
+// console.log(playerTwo.Deck);
+let playerOneDeck = playerOne.Deck[0];
+let playerTwoDeck = playerTwo.Deck[0];
 // console.log(playerOneDeck);
 // console.log(playerTwoDeck);
 
-console.log(playerOneDeck[0].score);
+// console.log(playerOneDeck[0].score);
 
 
-// //Make function to run the game!
-// function startGame() {
-//     for (let i = 0, j = 0; i < 26, j < 26; i++, j++) {
-//         if (playerOne.currentDeck[i].score > playerTwo.currentDeck[j].score) {
-//             console.log(playerOne.currentDeck[i].suit + playerOne.currentDeck[i].rank + " " + 
-//             playerTwo.currentDeck[j].suit + playerTwo.currentDeck[j].rank);
-//             console.log("Player One WINS!");
-//             //Set up conditional for player one win, now add cards to their deck from round
-//             playerOne.currentDeck.push(playerOne.currentDeck[i]);
-//             playerOne.currentDeck.shift(playerOne.currentDeck[i]);
-//             playerOne.currentDeck.push(playerTwo.currentDeck[j]);
-//             playerTwo.currentDeck.shift(playerTwo.currentDeck[j]);
-//         } //Set up else for player two win and add cards to their deck from round
-//         else if (playerOne.currentDeck[i].score < playerTwo.currentDeck[j].score) {
-//             console.log(playerOne.currentDeck[i].suit + playerOne.currentDeck[i].rank + " " + 
-//             playerTwo.currentDeck[j].suit + playerTwo.currentDeck[j].rank);
-//             console.log("Player Two WINS!");
-//             playerTwo.currentDeck.push(playerOne.currentDeck[i]);
-//             playerTwo.currentDeck.push(playerTwo.currentDeck[j]);
-//             playerTwo.currentDeck.shift(playerTwo.currentDeck[j]);
-//             playerOne.currentDeck.shift(playerOne.currentDeck[i]);
-//         } //Set up else for potential war scenario, score[i] = score[j]
-//         else if (playerOne.currentDeck[i].score === playerTwo.currentDeck[j].score) {
-//             console.log("WAR...what is it good for");
-//             console.log(playerOne.currentDeck[i].suit + playerOne.currentDeck[i].rank + " " + 
-//             playerTwo.currentDeck[j].suit + playerTwo.currentDeck[j].rank);
-//             //Another conditional to account for extra cards being played in war scenario
-//             if (playerOne.currentDeck[i + 1].score > playerTwo.currentDeck[j + 1].score) {
-//                 playerOne.currentDeck.push(playerOne.currentDeck[i]);
-//                 playerOne.currentDeck.push(playerOne.currentDeck[i + 1]);
-//                 playerOne.currentDeck.push(playerOne.currentDeck[i +2]);
-//                 playerOne.currentDeck.push(playerOne.currentDeck[i +3]);
+//Make function to run the game!
+function startGame() {
+    for (let i = 0, j = 0; i < 26, j < 26; i++, j++) {
+        if (playerOneDeck[i].score > playerTwoDeck[j].score) {
+            console.log(playerOneDeck[i].suit + playerOneDeck[i].rank + " " + 
+            playerTwoDeck[j].suit + playerTwoDeck[j].rank);
+            console.log("Player One WINS!");
+            //Set up conditional for player one win, now add cards to their deck from round
+            playerOneDeck.push(playerOneDeck[i]);
+            playerOneDeck.shift(playerOneDeck[i]);
+            playerOneDeck.push(playerTwoDeck[j]);
+            playerTwoDeck.shift(playerTwoDeck[j]);
+        } //Set up else for player two win and add cards to their deck from round
+        else if (playerOneDeck[i].score < playerTwoDeck[j].score) {
+            console.log(playerOneDeck[i].suit + playerOneDeck[i].rank + " " + 
+            playerTwoDeck[j].suit + playerTwoDeck[j].rank);
+            console.log("Player Two WINS!");
+            playerTwoDeck.push(playerOneDeck[i]);
+            playerTwoDeck.push(playerTwoDeck[j]);
+            playerTwoDeck.shift(playerTwoDeck[j]);
+            playerOneDeck.shift(playerOneDeck[i]);
+        } //Set up else for potential war scenario, score[i] = score[j]
+        else if (playerOneDeck[i].score === playerTwoDeck[j].score) {
+            console.log("WAR...what is it good for");
+            console.log(playerOneDeck[i].suit + playerOneDeck[i].rank + " " + 
+            playerTwoDeck[j].suit + playerTwoDeck[j].rank);
+            //Another conditional to account for extra cards being played in war scenario
+            if (playerOneDeck[i + 1].score > playerTwoDeck[j + 1].score) {
+                playerOneDeck.push(playerOneDeck[i]);
+                playerOneDeck.push(playerOneDeck[i + 1]);
+                playerOneDeck.push(playerOneDeck[i +2]);
+                playerOneDeck.push(playerOneDeck[i +3]);
 
-//                 playerOne.currentDeck.shift(playerOne.currentDeck[i]);
-//                 playerOne.currentDeck.shift(playerOne.currentDeck[i + 1]);
-//                 playerOne.currentDeck.shift(playerOne.currentDeck[i +2]);
-//                 playerOne.currentDeck.shift(playerOne.currentDeck[i +3]);
+                playerOneDeck.shift(playerOneDeck[i]);
+                playerOneDeck.shift(playerOneDeck[i + 1]);
+                playerOneDeck.shift(playerOneDeck[i +2]);
+                playerOneDeck.shift(playerOneDeck[i +3]);
 
-//                 playerOne.currentDeck.push(playerTwo.currentDeck[j]);
-//                 playerOne.currentDeck.push(playerTwo.currentDeck[j +1]);
-//                 playerOne.currentDeck.push(playerTwo.currentDeck[j + 2]);
-//                 playerOne.currentDeck.push(playerTwo.currentDeck[j + 3]);
+                playerOneDeck.push(playerTwoDeck[j]);
+                playerOneDeck.push(playerTwoDeck[j +1]);
+                playerOneDeck.push(playerTwoDeck[j + 2]);
+                playerOneDeck.push(playerTwoDeck[j + 3]);
 
-//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j]);
-//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j + 1]);
-//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j +2]);
-//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j +3]);
-//             } else {
-//                 playerTwo.currentDeck.push(playerOne.currentDeck[i]);
-//                 playerTwo.currentDeck.push(playerOne.currentDeck[i + 1]);
-//                 playerTwo.currentDeck.push(playerOne.currentDeck[i +2]);
-//                 playerTwo.currentDeck.push(playerOne.currentDeck[i +3]);
+                playerTwoDeck.shift(playerTwoDeck[j]);
+                playerTwoDeck.shift(playerTwoDeck[j + 1]);
+                playerTwoDeck.shift(playerTwoDeck[j +2]);
+                playerTwoDeck.shift(playerTwoDeck[j +3]);
+            } else {
+                playerTwoDeck.push(playerOneDeck[i]);
+                playerTwoDeck.push(playerOneDeck[i + 1]);
+                playerTwoDeck.push(playerOneDeck[i +2]);
+                playerTwoDeck.push(playerOneDeck[i +3]);
 
-//                 playerTwo.currentDeck.push(playerTwo.currentDeck[j]);
-//                 playerTwo.currentDeck.push(playerTwo.currentDeck[j +1]);
-//                 playerTwo.currentDeck.push(playerTwo.currentDeck[j + 2]);
-//                 playerTwo.currentDeck.push(playerTwo.currentDeck[j + 3]);
+                playerTwoDeck.push(playerTwoDeck[j]);
+                playerTwoDeck.push(playerTwoDeck[j +1]);
+                playerTwoDeck.push(playerTwoDeck[j + 2]);
+                playerTwoDeck.push(playerTwoDeck[j + 3]);
 
-//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j]);
-//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j + 1]);
-//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j +2]);
-//                 playerTwo.currentDeck.shift(playerTwo.currentDeck[j +3]);
+                playerTwoDeck.shift(playerTwoDeck[j]);
+                playerTwoDeck.shift(playerTwoDeck[j + 1]);
+                playerTwoDeck.shift(playerTwoDeck[j +2]);
+                playerTwoDeck.shift(playerTwoDeck[j +3]);
 
-//                 playerOne.currentDeck.shift(playerOne.currentDeck[i]);
-//                 playerOne.currentDeck.shift(playerOne.currentDeck[i + 1]);
-//                 playerOne.currentDeck.shift(playerOne.currentDeck[i +2]);
-//                 playerOne.currentDeck.shift(playerOne.currentDeck[i +3]);
-//             }
-//         }
-//     }
-// }
+                playerOneDeck.shift(playerOneDeck[i]);
+                playerOneDeck.shift(playerOneDeck[i + 1]);
+                playerOneDeck.shift(playerOneDeck[i +2]);
+                playerOneDeck.shift(playerOneDeck[i +3]);
+            }
+        }
+    }
+}
 
-// console.log(startGame());
+console.log(startGame());
 
 
 
