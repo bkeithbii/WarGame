@@ -71,8 +71,16 @@ function startGame() {
             console.log("Player One WINS!");
             //Set up conditional for player one win, now add cards to their deck from round
             playerOne.currentDeck.push(playerOne.currentDeck[i]);
-            playerOne.currentDeck.push(playerTwo.currentDeck[i]);
-        }
+            playerOne.currentDeck.push(playerTwo.currentDeck[j]);
+        } //Set up else for player two win and add cards to their deck from round
+        else if (playerOne.currentDeck[i].score < playerTwo.currentDeck[i].score) {
+            console.log("Player One: " +
+            playerOne.currentDeck[i].suit + playerOne.currentDeck[i].rank + " " + 
+            "Player Two: " + playerTwo.currentDeck[i].suit + playerTwo.currentDeck[i].rank);
+            console.log("Player Two WINS!");
+            playerTwo.currentDeck.push(playerOne.currentDeck[i]);
+            playerTwo.currentDeck.push(playerTwo.currentDeck[j]);
+        } //
     }
 }
 
