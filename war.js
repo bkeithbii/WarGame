@@ -27,6 +27,13 @@ class Deck {
    shuffle() {
        return warDeck.cards.sort(function(a, b){ return 0.5-Math.random(); })
    }
+   distributeCards() {
+        playerOne.currentDeck.push(warDeck.cards.slice(0, 26));
+        playerTwo.currentDeck.push(warDeck.cards.slice(26, 52));
+   }
+   addCardsInPlay() {
+
+   }
 }
 
 //Make object for players in game
@@ -48,12 +55,18 @@ warDeck.makeCards();
 
 //Next - SHUFFLE the deck 
 warDeck.shuffle();
-console.log(warDeck.cards);
+// console.log(warDeck.cards);
 //This is a shuffled deck
 
 
+//Deck dealt evenly amongst players
+warDeck.distributeCards();
+console.log(playerOne.currentDeck);
+console.log(playerTwo.currentDeck);
 
 
+//Draw a card from each players deck
+// warDeck.addCardsInPlay();
 
 
 
