@@ -72,8 +72,9 @@ let playerTwoDeck = playerTwo.Deck[0];
 function startGame() {
     for (let i = 0, j = 0; i < 26, j < 26; i++, j++) {
         if (playerOneDeck[i].score > playerTwoDeck[j].score) {
-            console.log(playerOneDeck[i].suit + playerOneDeck[i].rank + " " + 
-            playerTwoDeck[j].suit + playerTwoDeck[j].rank);
+            //Add players titles to each round of play
+            console.log("Player 1: " + playerOneDeck[i].rank + "of" + playerOneDeck[i].suit + " " + 
+            "Player 2: " + playerTwoDeck[j].rank + "of" + playerTwoDeck[j].suit);
             console.log("Player One WINS!");
             //Set up conditional for player one win, now add cards to their deck from round
             playerOneDeck.push(playerOneDeck[i]);
@@ -82,18 +83,24 @@ function startGame() {
             playerTwoDeck.shift(playerTwoDeck[j]);
         } //Set up else for player two win and add cards to their deck from round
         else if (playerOneDeck[i].score < playerTwoDeck[j].score) {
-            console.log(playerOneDeck[i].suit + playerOneDeck[i].rank + " " + 
-            playerTwoDeck[j].suit + playerTwoDeck[j].rank);
+            console.log("Player 1: " + playerOneDeck[i].rank + "of" + playerOneDeck[i].suit + " " + 
+            "Player 2: " + playerTwoDeck[j].rank + "of" + playerTwoDeck[j].suit);
             console.log("Player Two WINS!");
             playerTwoDeck.push(playerOneDeck[i]);
             playerTwoDeck.push(playerTwoDeck[j]);
+
+            //Give indication of each players card amount
+            console.log("Player 1 has: " + playerOneDeck.length + "cards" + " " + 
+            "Player 2 has: " + playerTwoDeck.length + "cards");
+
             playerTwoDeck.shift(playerTwoDeck[j]);
             playerOneDeck.shift(playerOneDeck[i]);
+
         } //Set up else for potential war scenario, score[i] = score[j]
         else if (playerOneDeck[i].score === playerTwoDeck[j].score) {
             console.log("WAR...what is it good for");
-            console.log(playerOneDeck[i].suit + playerOneDeck[i].rank + " " + 
-            playerTwoDeck[j].suit + playerTwoDeck[j].rank);
+            console.log("Player 1: " + playerOneDeck[i].rank + "of" + playerOneDeck[i].suit + " " + 
+            "Player 2: " + playerTwoDeck[j].rank + "of" + playerTwoDeck[j].suit);
             //Another conditional to account for extra cards being played in war scenario
             if (playerOneDeck[i + 1].score > playerTwoDeck[j + 1].score) {
                 playerOneDeck.push(playerOneDeck[i]);
