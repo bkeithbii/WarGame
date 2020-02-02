@@ -97,10 +97,22 @@ function startGame() {
                 playerOne.currentDeck.push(playerTwo.currentDeck[j +1]);
                 playerOne.currentDeck.push(playerTwo.currentDeck[j + 2]);
                 playerOne.currentDeck.push(playerTwo.currentDeck[j + 3]);
+            } else {
+                playerTwo.currentDeck.push(playerOne.currentDeck[i]);
+                playerTwo.currentDeck.push(playerOne.currentDeck[i + 1]);
+                playerTwo.currentDeck.push(playerOne.currentDeck[i +2]);
+                playerTwo.currentDeck.push(playerOne.currentDeck[i +3]);
+
+                playerTwo.currentDeck.push(playerTwo.currentDeck[j]);
+                playerTwo.currentDeck.push(playerTwo.currentDeck[j +1]);
+                playerTwo.currentDeck.push(playerTwo.currentDeck[j + 2]);
+                playerTwo.currentDeck.push(playerTwo.currentDeck[j + 3]);
             }
         }
     }
 }
+
+
 
 
 
