@@ -31,9 +31,6 @@ class Deck {
         playerOne.currentDeck.push(warDeck.cards.slice(0, 26));
         playerTwo.currentDeck.push(warDeck.cards.slice(26, 52));
    }
-   addCardsInPlay() {
-
-   }
 }
 
 //Make object for players in game
@@ -61,12 +58,8 @@ warDeck.shuffle();
 
 //Deck dealt evenly amongst players
 warDeck.distributeCards();
-console.log(playerOne.currentDeck);
-console.log(playerTwo.currentDeck);
-
-
-//Draw a card from each players deck
-// warDeck.addCardsInPlay();
+// console.log(playerOne.currentDeck);
+// console.log(playerTwo.currentDeck);
 
 
 
@@ -87,36 +80,5 @@ console.log(playerTwo.currentDeck);
 
 
 
-// //Create two players
-// let playerOneDeck = [];
-// let playerTwoDeck = [];
 
-// //Divide the deck amongst the players
-// playerOneDeck.push(warDeck.cards.slice(0, 26));
-// playerTwoDeck.push(warDeck.cards.slice(26, 52));
-
-// // console.log(playerOneDeck);
-// // console.log(playerTwoDeck);
-// //Deck divided into two random stacks of 26
-
-// //Deal cards
-// let dealPlayerOne = () =>
-//     console.log(playerOneDeck[Math.floor(Math.random()*playerOneDeck.length)]);
-
-// let dealPlayerTwo = () => 
-//     console.log(playerTwoDeck[Math.floor(Math.random()*playerTwoDeck.length)]);
-
-// dealPlayerOne();
-// dealPlayerTwo();
-// //Cards dealt amongst players
-
-
-
-// //Create a function to start each turn
-
-
-
-// //Random card draw
-// //  console.log(warDeck.draw());
-// //  console.log(warDeck.draw());
 
