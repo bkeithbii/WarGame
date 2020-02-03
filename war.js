@@ -38,7 +38,6 @@ class Player {
     constructor(name, Deck, winDeck) {
         this.name = name
         this.Deck = []
-        this.winDeck = []
     }
 }
 let playerOne = new Player("Player 1");
@@ -62,116 +61,149 @@ warDeck.distributeCards();
 // console.log(playerTwo.Deck);
 let playerOneDeck = playerOne.Deck[0];
 let playerTwoDeck = playerTwo.Deck[0];
-// console.log(playerOneDeck);
-// console.log(playerTwoDeck);
-
+console.log(playerOneDeck);
+console.log(playerTwoDeck);
 // console.log(playerOneDeck[0].score);
 
 
+
+//Create an array for each players pile where they play cards
+let playerOnePile = [];
+let playerTwoPile = [];
+
+
 //Make function to run the game!
-function startGame() {
-    for (let i = 0, j = 0; i < 26, j < 26; i++, j++) {
-        if (playerOneDeck[i].score > playerTwoDeck[j].score) {
-            //Add players titles to each round of play
-            console.log("Player 1: " + playerOneDeck[i].rank + " of " + playerOneDeck[i].suit + " " + 
-            "Player 2: " + playerTwoDeck[j].rank + " of " + playerTwoDeck[j].suit);
-            console.log("Player One WINS!");
-            //Set up conditional for player one win, now add cards to their deck from round
-            playerOneDeck.push(playerOneDeck[i]);
-            playerOneDeck.shift(playerOneDeck[i]);
-            playerOneDeck.push(playerTwoDeck[j]);
-            playerTwoDeck.shift(playerTwoDeck[j]);
 
-            //Give indication of each players card amount
-            console.log("Player 1 has: " + playerOneDeck.length + "cards" + " " + 
-            "Player 2 has: " + playerTwoDeck.length + "cards");
+    //Put both players put top card of deck into a pile
+    //Compare cards in the pile for higher score
+    //Player who plays card w/ higher score takes entire pile into their deck
+    //If cards in pile are = to one another engage in war
+    //Both players put next 3 cards from their deck facedown into the pile
+    //Both players play next card from top of deck into pile
+    //Player with highest card takes entire pile 
+    //Continue game until one player has 52 cards and one has 0
+    //Player with 52 cards wins, player with 0 cards loses.
 
-        } //Set up else for player two win and add cards to their deck from round
-        else if (playerOneDeck[i].score < playerTwoDeck[j].score) {
-            console.log("Player 1: " + playerOneDeck[i].rank + " of " + playerOneDeck[i].suit + " " + 
-            "Player 2: " + playerTwoDeck[j].rank + " of " + playerTwoDeck[j].suit);
-            console.log("Player Two WINS!");
-            playerTwoDeck.push(playerOneDeck[i]);
-            playerTwoDeck.push(playerTwoDeck[j]);
 
-            playerTwoDeck.shift(playerTwoDeck[j]);
-            playerOneDeck.shift(playerOneDeck[i]);
 
-             //Give indication of each players card amount
-             console.log("Player 1 has: " + playerOneDeck.length + "cards" + " " + 
-             "Player 2 has: " + playerTwoDeck.length + "cards");
 
-        } //Set up else for potential war scenario, score[i] = score[j]
-        else if (playerOneDeck[i].score === playerTwoDeck[j].score) {
-            console.log("WAR...what is it good for");
-            console.log("Player 1: " + playerOneDeck[i].rank + " of " + playerOneDeck[i].suit + " " + 
-            "Player 2: " + playerTwoDeck[j].rank + " of " + playerTwoDeck[j].suit);
-            //Another conditional to account for extra cards being played in war scenario
-            if (playerOneDeck[i + 1].score > playerTwoDeck[j + 1].score) {
-                playerOneDeck.push(playerOneDeck[i]);
-                playerOneDeck.push(playerOneDeck[i + 1]);
-                playerOneDeck.push(playerOneDeck[i +2]);
-                playerOneDeck.push(playerOneDeck[i +3]);
 
-                playerOneDeck.shift(playerOneDeck[i]);
-                playerOneDeck.shift(playerOneDeck[i + 1]);
-                playerOneDeck.shift(playerOneDeck[i +2]);
-                playerOneDeck.shift(playerOneDeck[i +3]);
 
-                playerOneDeck.push(playerTwoDeck[j]);
-                playerOneDeck.push(playerTwoDeck[j +1]);
-                playerOneDeck.push(playerTwoDeck[j + 2]);
-                playerOneDeck.push(playerTwoDeck[j + 3]);
 
-                playerTwoDeck.shift(playerTwoDeck[j]);
-                playerTwoDeck.shift(playerTwoDeck[j + 1]);
-                playerTwoDeck.shift(playerTwoDeck[j +2]);
-                playerTwoDeck.shift(playerTwoDeck[j +3]);
 
-                 //Give indication of each players card amount
-            console.log("Player 1 has: " + playerOneDeck.length + "cards" + " " + 
-            "Player 2 has: " + playerTwoDeck.length + "cards");
+// function startGame() {
+//     for (let i = 0, j = 0; i < playerOneDeck.length, j < playerTwoDeck.length; i++, j++) {
+//         if (playerOneDeck[i].score > playerTwoDeck[j].score) {
+//             //Add players titles to each round of play
+//             console.log("Player 1: " + playerOneDeck[i].rank + " of " + playerOneDeck[i].suit + " " + 
+//             "Player 2: " + playerTwoDeck[j].rank + " of " + playerTwoDeck[j].suit);
+//             console.log("Player One WINS!");
+//             //Set up conditional for player one win, now add cards to their deck from round
+//             playerOneDeck.shift(playerOneDeck[i]);
+//             playerTwoDeck.shift(playerTwoDeck[j]);
+//             playerOneDeck.push(playerOneDeck[i]);
+//             playerOneDeck.push(playerTwoDeck[j]);
+            
 
-            } else {
-                playerTwoDeck.push(playerOneDeck[i]);
-                playerTwoDeck.push(playerOneDeck[i + 1]);
-                playerTwoDeck.push(playerOneDeck[i +2]);
-                playerTwoDeck.push(playerOneDeck[i +3]);
+//             //Give indication of each players card amount
+//             console.log("Player 1 has: " + playerOneDeck.length + "cards" + " " + 
+//             "Player 2 has: " + playerTwoDeck.length + "cards");
 
-                playerTwoDeck.push(playerTwoDeck[j]);
-                playerTwoDeck.push(playerTwoDeck[j +1]);
-                playerTwoDeck.push(playerTwoDeck[j + 2]);
-                playerTwoDeck.push(playerTwoDeck[j + 3]);
+//         } //Set up else for player two win and add cards to their deck from round
+//         else if (playerOneDeck[i].score < playerTwoDeck[j].score) {
+//             console.log("Player 1: " + playerOneDeck[i].rank + " of " + playerOneDeck[i].suit + " " + 
+//             "Player 2: " + playerTwoDeck[j].rank + " of " + playerTwoDeck[j].suit);
+//             console.log("Player Two WINS!");
+//             playerTwoDeck.shift(playerTwoDeck[j]);
+//             playerOneDeck.shift(playerOneDeck[i]);
 
-                playerTwoDeck.shift(playerTwoDeck[j]);
-                playerTwoDeck.shift(playerTwoDeck[j + 1]);
-                playerTwoDeck.shift(playerTwoDeck[j +2]);
-                playerTwoDeck.shift(playerTwoDeck[j +3]);
+//             playerTwoDeck.push(playerOneDeck[i]);
+//             playerTwoDeck.push(playerTwoDeck[j]);
 
-                playerOneDeck.shift(playerOneDeck[i]);
-                playerOneDeck.shift(playerOneDeck[i + 1]);
-                playerOneDeck.shift(playerOneDeck[i +2]);
-                playerOneDeck.shift(playerOneDeck[i +3]);
+        
+//              //Give indication of each players card amount
+//              console.log("Player 1 has: " + playerOneDeck.length + "cards" + " " + 
+//              "Player 2 has: " + playerTwoDeck.length + "cards");
 
-                 //Give indication of each players card amount
-            console.log("Player 1 has: " + playerOneDeck.length + "cards" + " " + 
-            "Player 2 has: " + playerTwoDeck.length + "cards");
-            }
-        }
-    }
-}
+//         } //Set up else for potential war scenario, score[i] = score[j]
+//         else if (playerOneDeck[i].score === playerTwoDeck[j].score) {
+//             console.log("WAR...what is it good for");
+//             console.log("Player 1: " + playerOneDeck[i].rank + " of " + playerOneDeck[i].suit + " " + 
+//             "Player 2: " + playerTwoDeck[j].rank + " of " + playerTwoDeck[j].suit);
+//             //Another conditional to account for extra cards being played in war scenario
+//             if (playerOneDeck[i + 1].score > playerTwoDeck[j + 1].score) {
+//                 playerOneDeck.shift(playerOneDeck[i]);
+//                 playerOneDeck.shift(playerOneDeck[i + 1]);
+//                 playerOneDeck.shift(playerOneDeck[i +2]);
+//                 playerOneDeck.shift(playerOneDeck[i +3]);
+                
+//                 playerTwoDeck.shift(playerTwoDeck[j]);
+//                 playerTwoDeck.shift(playerTwoDeck[j + 1]);
+//                 playerTwoDeck.shift(playerTwoDeck[j +2]);
+//                 playerTwoDeck.shift(playerTwoDeck[j +3]);
 
-console.log(startGame());
+//                 playerOneDeck.push(playerOneDeck[i]);
+//                 playerOneDeck.push(playerOneDeck[i + 1]);
+//                 playerOneDeck.push(playerOneDeck[i +2]);
+//                 playerOneDeck.push(playerOneDeck[i +3]);
 
-function checkForWinner() {
-    if (playerOneDeck.length === 52) {
-        console.log("Player One VICTORIOUS!")
-    } else if (playerTwoDeck.length === 52) {
-        console.log("Player Two PREVAILS!")
-    } else {
-        startGame();
-    }
-}
+//                 playerOneDeck.push(playerTwoDeck[j]);
+//                 playerOneDeck.push(playerTwoDeck[j +1]);
+//                 playerOneDeck.push(playerTwoDeck[j + 2]);
+//                 playerOneDeck.push(playerTwoDeck[j + 3]);
+
+//                  //Give indication of each players card amount
+//             console.log("Player 1 has: " + playerOneDeck.length + "cards" + " " + 
+//             "Player 2 has: " + playerTwoDeck.length + "cards");
+
+//             } else {
+//                  playerTwoDeck.shift(playerTwoDeck[j]);
+//                 playerTwoDeck.shift(playerTwoDeck[j + 1]);
+//                 playerTwoDeck.shift(playerTwoDeck[j +2]);
+//                 playerTwoDeck.shift(playerTwoDeck[j +3]);
+
+//                 playerOneDeck.shift(playerOneDeck[i]);
+//                 playerOneDeck.shift(playerOneDeck[i + 1]);
+//                 playerOneDeck.shift(playerOneDeck[i +2]);
+//                 playerOneDeck.shift(playerOneDeck[i +3]);
+            
+//                 playerTwoDeck.push(playerOneDeck[i]);
+//                 playerTwoDeck.push(playerOneDeck[i + 1]);
+//                 playerTwoDeck.push(playerOneDeck[i +2]);
+//                 playerTwoDeck.push(playerOneDeck[i +3]);
+
+//                 playerTwoDeck.push(playerTwoDeck[j]);
+//                 playerTwoDeck.push(playerTwoDeck[j +1]);
+//                 playerTwoDeck.push(playerTwoDeck[j + 2]);
+//                 playerTwoDeck.push(playerTwoDeck[j + 3]);
+
+
+//                  //Give indication of each players card amount
+//             console.log("Player 1 has: " + playerOneDeck.length + "cards" + " " + 
+//             "Player 2 has: " + playerTwoDeck.length + "cards");
+//             }
+               
+//             }
+//     }
+// }
+
+// // console.log(startGame());
+
+// function checkForWinner() {
+//     if (playerOneDeck.length === 52) {
+//         console.log("Player Two VICTORIOUS!")
+//     } else if (playerTwoDeck.length === 52) {
+//         console.log("Player Two PREVAILS!")
+//     } else {
+//         startGame();
+//     }
+// }
+ 
+
+// startGame();
+// console.log(gameOver());
+// checkForWinner();
+
 
 
 
