@@ -84,6 +84,43 @@ let playerTwoPile = [];
     //Continue game until one player has 52 cards and one has 0
     //Player with 52 cards wins, player with 0 cards loses.
 
+//Function for cards in play
+let cardsInPlay = () => {
+    playerOnePile.unshift(playerOneDeck[0])
+    playerOneDeck.shift();
+    playerTwoPile.unshift(playerTwoDeck[0])
+    playerTwoDeck.shift();
+
+    console.log(`Player One played a ${playerOnePile[0].rank} of ${playerOnePile[0].suit} 
+    and Player Two played a ${playerTwoPile[0].rank} of ${playerTwoPile[0].suit}`);
+}
+//End of one turn 
+
+
+//Create regular war functionality
+let playGame = () => {
+    cardsInPlay();
+        if (playerOnePile[0].rank > playerTwoPile[0].rank)
+            playerOneDeck.push(playerOnePile[0], playerTwoPile[0]);
+            playerOnePile = [];
+            playerTwoPile = [];
+            
+            console.log(`Player One WINS - card amount: ${playerOneDeck.length}`);
+            console.log(`Player Two - card amount: ${playerTwoDeck.length}`);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
