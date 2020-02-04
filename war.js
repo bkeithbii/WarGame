@@ -137,6 +137,26 @@ let thisIsWar = () => {
     }
 }
 
+//How to confirm at the end of war the standings and proceedings
+let evaluateWar = () => {
+    if (playerOnePile[0].rank > playerTwoPile[0].rank) {
+        playerOneDeck.push(...playerOnePile, ...playerTwoPile);
+        playerOnePile = [];
+        playerTwoPile = [];
+        
+        console.log(`Player One WINS the WAR - card amount: ${playerOneDeck.length}`);
+        console.log(`     Player Two - card amount: ${playerTwoDeck.length}`);
+ } else if (playerOnePile[0].rank < playerTwoPile[0].rank) {
+        playerTwoDeck.push(...playerTwoPile, ...playerOnePile);
+        playerOnePile = [];
+        playerTwoPile = [];
+
+        console.log(`Player Two WINS the WAR - card amount ${playerTwoDeck.length}`);
+        console.log(`     Player One - card amount ${playerOneDeck.length}`);
+ } else {
+     thisIsWar();
+ }
+}
 
 
 
