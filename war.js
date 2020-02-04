@@ -61,8 +61,8 @@ warDeck.distributeCards();
 // console.log(playerTwo.Deck);
 let playerOneDeck = playerOne.Deck[0];
 let playerTwoDeck = playerTwo.Deck[0];
-console.log(playerOneDeck);
-console.log(playerTwoDeck);
+// console.log(playerOneDeck);
+// console.log(playerTwoDeck);
 // console.log(playerOneDeck[0].score);
 
 
@@ -100,14 +100,43 @@ let cardsInPlay = () => {
 //Create regular war functionality
 let playGame = () => {
     cardsInPlay();
-        if (playerOnePile[0].rank > playerTwoPile[0].rank)
+        if (playerOnePile[0].rank > playerTwoPile[0].rank) {
             playerOneDeck.push(playerOnePile[0], playerTwoPile[0]);
             playerOnePile = [];
             playerTwoPile = [];
             
             console.log(`Player One WINS - card amount: ${playerOneDeck.length}`);
-            console.log(`Player Two - card amount: ${playerTwoDeck.length}`);
+            console.log(`     Player Two - card amount: ${playerTwoDeck.length}`);
+     } else if (playerOnePile[0].rank < playerTwoPile[0].rank) {
+            playerTwoDeck.push(playerTwoPile[0], playerOnePile[0]);
+            playerOnePile = [];
+            playerTwoPile = [];
+
+            console.log(`Player Two WINS - card amount ${playerTwoDeck.length}`);
+            console.log(`     Player One - card amount ${playerOneDeck.length}`);
+     } else {
+         thisIsWar();
+     }
 }
+
+let thisIsWar = () => {
+    console.log("WAR - What is it good for!");
+    if (playerOneDeck.length < 4) {
+        console.log(`Player One has fallen to ${playerOneDeck.length} cards and must accept defeat. PLAYER TWO WINS! *ENDGAME*`);
+    } else if (playerTwoDeck.length < 4) {
+        console.log(`Player Two has fallen to ${playerTwoDeck.length} cards and must accept defeat. PLAYER ONE WINS! *ENDGAME*`);
+    } else {
+        cardsInPlay();
+        cardsInPlay();
+        cardsInPlay();
+        cardsInPlay();
+        
+        console.log(`Player One draws 3 cards facedown and plays a ${playerOnePile[0].rank} of ${playerOnePile[0].suit}`);
+        console.log(`Player Two draws 3 cards facedown and plays a ${playerTwoPile[0].rank} of ${playerTwoPile[0].suit}`);
+        evaluateWar();
+    }
+}
+
 
 
 
