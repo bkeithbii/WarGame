@@ -96,6 +96,15 @@ let cardsInPlay = () => {
 }
 //End of one turn 
 
+//Function for WAR cards in play specifically 
+let warCardsInPlay = () => {
+    playerOnePile.unshift(playerOneDeck[0])
+    playerOneDeck.shift();
+    playerTwoPile.unshift(playerTwoDeck[0])
+    playerTwoDeck.shift();
+
+    console.log(`***W.A.R***`);
+}
 
 //Create regular war functionality
 let playGame = () => {
@@ -107,16 +116,18 @@ let playGame = () => {
             
             console.log(`Player One WINS - card amount: ${playerOneDeck.length}`);
             console.log(`     Player Two - card amount: ${playerTwoDeck.length}`);
-     } else if (playerOnePile[0].rank < playerTwoPile[0].rank) {
+            determineWinner();
+        } else if (playerOnePile[0].rank < playerTwoPile[0].rank) {
             playerTwoDeck.push(playerTwoPile[0], playerOnePile[0]);
             playerOnePile = [];
             playerTwoPile = [];
 
             console.log(`Player Two WINS - card amount ${playerTwoDeck.length}`);
             console.log(`     Player One - card amount ${playerOneDeck.length}`);
-     } else {
-         thisIsWar();
-     }
+            determineWinner();
+        } else {
+            thisIsWar();
+        }
 }
 
 let thisIsWar = () => {
@@ -126,11 +137,10 @@ let thisIsWar = () => {
     } else if (playerTwoDeck.length < 4) {
         console.log(`Player Two has fallen to ${playerTwoDeck.length} cards and must accept defeat. PLAYER ONE WINS! *ENDGAME*`);
     } else {
-        cardsInPlay();
-        cardsInPlay();
-        cardsInPlay();
-        cardsInPlay();
-        
+        warCardsInPlay();
+        warCardsInPlay();
+        warCardsInPlay();
+
         console.log(`Player One draws 3 cards facedown and plays a ${playerOnePile[0].rank} of ${playerOnePile[0].suit}`);
         console.log(`Player Two draws 3 cards facedown and plays a ${playerTwoPile[0].rank} of ${playerTwoPile[0].suit}`);
         evaluateWar();
@@ -146,19 +156,32 @@ let evaluateWar = () => {
         
         console.log(`Player One WINS the WAR - card amount: ${playerOneDeck.length}`);
         console.log(`     Player Two - card amount: ${playerTwoDeck.length}`);
- } else if (playerOnePile[0].rank < playerTwoPile[0].rank) {
+        determineWinner();
+    } else if (playerOnePile[0].rank < playerTwoPile[0].rank) {
         playerTwoDeck.push(...playerTwoPile, ...playerOnePile);
         playerOnePile = [];
         playerTwoPile = [];
 
         console.log(`Player Two WINS the WAR - card amount ${playerTwoDeck.length}`);
         console.log(`     Player One - card amount ${playerOneDeck.length}`);
- } else {
+        determineWinner();
+    } else {
      thisIsWar();
  }
 }
 
+//Decide who wins based on card amount of players
+let determineWinner = () => {
+    if (playerOneDeck.length === 52) {
+        console.log("Player One VICTORIOUS");
+    } else if (playerTwoDeck.length === 52) {
+        console.log("Player Two PREVAILS");
+    } else {
+        playGame();
+    }
+}
 
+playGame();
 
 
 
