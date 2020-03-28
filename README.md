@@ -16,4 +16,18 @@ If there is a tie, then it's War! In the card game each player adds places the t
 
 ## Deployment
 
-This project was deployed with GitHub Pages, click [**here**](https://bkeithbii.github.io/WarGame/) and head to the console to watch the game play out. (click refresh for new games)
+This project was deployed with GitHub Pages, click [**here**](https://bkeithbii.github.io/WarGame/) and head to the console to watch the game play out. (click refresh for new games).
+
+Also, you can clone the repo to your local environment to play on your own.
+
+## Authors
+
+- **Brian Brown II**
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgements
+
+General Assembly
