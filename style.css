@@ -8,6 +8,10 @@ body {
   align-items: center;
   margin: 10%;
   font-family: "Pangolin", cursive;
+  background-image: url(aditya-chinchure-hyN9aU9Tm-c-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid black;
 }
 h1 {
   font-size: 50px;
@@ -20,4 +24,8 @@ h3 {
 }
 .highlight {
   color: #f82415;
+}
+.text {
+  text-align: center;
+  background-color: white;
 }
