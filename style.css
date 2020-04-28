@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10%;
+  font-family: "Pangolin", cursive;
+}
+h1 {
+  font-size: 50px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 20px;
+}
+.highlight {
+  color: #f82415;
+}
